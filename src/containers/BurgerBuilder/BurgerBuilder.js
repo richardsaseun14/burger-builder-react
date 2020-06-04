@@ -28,6 +28,10 @@ export class BurgerBuilder extends Component {
     this.setState({ purchasing: false });
   };
 
+  purchaseContinueHandler = () => {
+    alert("Purchase Done");
+  };
+
   updatePurchaseState = (ingredients) => {
     // const ingredients = { ...this.state.ingredients };
     let sum = Object.values(ingredients);
@@ -73,7 +77,11 @@ export class BurgerBuilder extends Component {
           modalClose={this.purchaseCancelHandler}
           show={this.state.purchasing}
         >
-          <OrderSummary ingredients={this.state.ingredients}></OrderSummary>
+          <OrderSummary
+            cancel={this.purchaseCancelHandler}
+            continue={this.purchaseContinueHandler}
+            ingredients={this.state.ingredients}
+          ></OrderSummary>
         </Modal>
         <Burger ingredients={this.state.ingredients}></Burger>
         <BuildControls
